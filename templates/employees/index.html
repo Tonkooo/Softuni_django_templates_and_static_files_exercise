@@ -1,4 +1,29 @@
+<style>
+    body {
+        padding: 50px;
+    }
+    .young {
+        color: green;
+    }
+    .not-that-young {
+        color:orangered;
+    }
+    
+</style>
+
 <h1> {{ title }}</h1>
+
+{% url 'index' %}
+{{ get_params }}
+<ul>
+    {% for age in ages %}
+        <li>
+            <a href="{% url 'index' %}?age={{ age }}"> {{ age }}</a>
+        </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'employee_details' pk=7 %}">Go to employee</a>
 
 <h1>With 'dict'</h1>
 <h2> {{ person.first_name }}</h2>
@@ -12,16 +37,32 @@
 
 <hr>
 <h3>{{ ll.2 }}</h3>
-
 <h1>FILTERS</h1>
-<p>
-{{ person_obj.full_name|truncatechars:3 }}
-    </p>
-
-<p>
-    {{ person_obj.full_name|truncatechars:33 }}
-</p>
-
+<p>{{ person_obj.full_name|truncatechars:3 }}</p>
+<p>{{ person_obj.full_name|truncatechars:33 }}</p>
+<p>{{ person_obj.age }}</p>
+<p>{{ person_obj.age|default:"Unknown" }}</p>
+<p>{{ person|length }}</p>
 <p> {{ names|join:', ' }}</p>
-<p> {{ date }} </p> 
+<p> {{ date }}</p>
 
+<hr>
+<h1>Tags</h1>
+{% if ages %}
+    <p>{{ ages|join:', ' }}</p>
+{% endif %}
+
+<h2> for, for-empty</h2>
+<ul>
+    {% for age in ages %}
+        {% if age <= 20 %}
+        <li class="young">
+            <strong> {{ age }}</strong>
+        </li>
+        {% else %}
+            <li class="not-that-young">
+                <strong> {{ age }}</strong>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>

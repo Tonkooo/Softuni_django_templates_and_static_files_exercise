@@ -1,12 +1,16 @@
 import datetime
+import random
 
 from django.shortcuts import render
 
 
+
 class Person:
-    def __init__(self, first_name, last_name):
+    def __init__(self, first_name, last_name, age=None):
         self.first_name = first_name
         self.last_name = last_name
+        self.age = age
+
 
     @property
     def full_name(self):
@@ -23,7 +27,17 @@ def index(request):
         'person_obj': Person("Doncho", "Minkov"),
         "ll": [1, 2, 3,],
         'names': ["Doncho", "Gosho", "Maria"],
-        'date': datetime.date.today()
+        "date": datetime.date.today(),
+        "ages": [random.randrange(1, 100) for _ in range(10)],
+        "get_params": request.GET,
+
     }
 
     return render(request, 'employees/index.html', context)
+
+
+def employee_details(request, pk):
+    context = {
+        'pk':pk,
+    }
+    return render(request, 'employees/details.html', context)
