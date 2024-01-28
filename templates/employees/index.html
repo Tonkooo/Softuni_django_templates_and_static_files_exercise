@@ -9,3 +9,19 @@
 <h2> {{ person_obj.first_name }}</h2>
 <h2> {{ person_obj.last_name }}</h2>
 <h2> {{ person_obj.full_name }}</h2>
+
+<hr>
+<h3>{{ ll.2 }}</h3>
+
+<h1>FILTERS</h1>
+<p>
+{{ person_obj.full_name|truncatechars:3 }}
+    </p>
+
+<p>
+    {{ person_obj.full_name|truncatechars:33 }}
+</p>
+
+<p> {{ names|join:', ' }}</p>
+<p> {{ date }} </p> 
+

@@ -1,4 +1,7 @@
+import datetime
+
 from django.shortcuts import render
+
 
 class Person:
     def __init__(self, first_name, last_name):
@@ -18,8 +21,9 @@ def index(request):
             'last_name': 'Minkov',
         },
         'person_obj': Person("Doncho", "Minkov"),
-
+        "ll": [1, 2, 3,],
+        'names': ["Doncho", "Gosho", "Maria"],
+        'date': datetime.date.today()
     }
 
     return render(request, 'employees/index.html', context)
-
