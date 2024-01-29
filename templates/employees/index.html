@@ -1,15 +1,9 @@
-<style>
-    body {
-        padding: 50px;
-    }
-    .young {
-        color: green;
-    }
-    .not-that-young {
-        color:orangered;
-    }
-    
-</style>
+{% load static %}
+
+<link rel="stylesheet" href="/static/css/site.css">
+
+<!-- <img height="250" src="/static/imgs/car.png" alt="fast car"> -->
+<img height="250" src="{%  static 'imgs/car.png' %}" alt="fast car">
 
 <h1> {{ title }}</h1>
 
